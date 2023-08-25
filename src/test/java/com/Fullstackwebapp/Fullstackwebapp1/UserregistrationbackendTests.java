@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Fullstackwebapp1ApplicationTests {
+class UserregistrationbackendTests {
 
 	@Test
 	void contextLoads() {
