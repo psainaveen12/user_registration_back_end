@@ -3,10 +3,18 @@ package com.Fullstackwebapp.Fullstackwebapp1.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
 
 @Data
 @Entity
+@Table(name = "user_reg_tbl1")
 public class User {
 
     @Id
@@ -16,6 +24,8 @@ public class User {
     private String name;
     private String email;
     private Long phonenumber;
+    private LocalDate date;
+    private String time;
 
 //    public Long getId() {
 //        return id;
@@ -48,5 +58,6 @@ public class User {
 //    public void setEmail(String email) {
 //        this.email = email;
 //    }
+
 
 }

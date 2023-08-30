@@ -3,55 +3,42 @@ package com.Fullstackwebapp.Fullstackwebapp1.controller;
 import com.Fullstackwebapp.Fullstackwebapp1.exception.UserNotFoundException;
 import com.Fullstackwebapp.Fullstackwebapp1.model.User;
 import com.Fullstackwebapp.Fullstackwebapp1.repository.UserRepository;
+import com.Fullstackwebapp.Fullstackwebapp1.service.UserService;
 import jakarta.persistence.Id;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
 
 @RestController
 @CrossOrigin("http://localhost:3000/")
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @PostMapping("/user")
     User newUser(@RequestBody User newUser){
-        return userRepository.save(newUser);
+        return userService.createUser(newUser);
     }
 
     @GetMapping("/users")
     List<User> getAllUsers(){
-        return userRepository.findAll();
+        return userService.getAllUsers();
     }
 
     @GetMapping("/user/{id}")
     User getUserById(@PathVariable Long id){
-        return userRepository.findById(id)
-                .orElseThrow(()->new UserNotFoundException(id));
+        return userService.getUserById(id);
     }
 
     @PutMapping("/user/{id}")
     User updateUser(@RequestBody User newUser ,@PathVariable Long id){
-        return userRepository.findById(id)
-                .map(user -> {
-                    user.setUsername(newUser.getUsername());
-                    user.setName(newUser.getName());
-                    user.setEmail(newUser.getEmail());
-                    user.setPhonenumber(newUser.getPhonenumber());
-                    return userRepository.save(user);
-                }).orElseThrow(()->new UserNotFoundException(id));
+        return userService.updateUser(newUser,id);
     }
 
     @DeleteMapping("/user/{id}")
     String deleteUser(@PathVariable Long id){
-        if(!userRepository.existsById(id)){
-            throw new UserNotFoundException(id);
-        }
-        userRepository.deleteById(id);
-        return "User with id "+id +" has been Deleted Successfully!!";
+        return userService.deleteUser(id);
     }
 
 }
