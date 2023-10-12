@@ -6,12 +6,10 @@ import com.Fullstackwebapp.Fullstackwebapp1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class UserService {
@@ -24,7 +22,7 @@ public class UserService {
         return time.format(formatter);
     }
 
-    public User createUser( User newUser){
+    public User createUser(User newUser){
         newUser.setDate(LocalDate.now());
         newUser.setTime(timeFormate(LocalTime.now()));
         return userRepository.save(newUser);

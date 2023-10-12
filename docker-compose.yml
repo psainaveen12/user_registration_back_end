@@ -1,0 +1,15 @@
+#services:
+#  db:
+#    container_name: postgres
+#    image: postgres:15.4
+#    environment:
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: 1818
+#      PGDATA: /data/postgres
+#    volumes:
+#      - db:/data/postgres
+#    ports:
+#      - "5332:5432"
+#    networks:
+#      - db
+#    restart: unless-stopped
