@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 public class Fakenames {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "ID")
     private int ID;
     private String Givenname;
     private String Surname;
@@ -24,13 +25,16 @@ public class Fakenames {
     private String CCType;
     private int CVV2;
     private String CCExpires;
-    private String Color;
-    private String Bloodtype;
+    @Column(name = "Color")
+    private String color;
+    @Column(name = "Bloodtype")
+    private String bloodType;
     private double Kilograms;
     private int Centimeters;
     private String Gender;
     private String Nameset;
-    private String Countryfull;
+    @Column(name = "Countryfull")
+    private String countryfull;
     private int Age;
 
 }
