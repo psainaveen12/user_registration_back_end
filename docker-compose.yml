@@ -1,15 +1,71 @@
+#
 #services:
-#  db:
-#    container_name: postgres
-#    image: postgres:15.4
-#    environment:
-#      POSTGRES_USER: postgres
-#      POSTGRES_PASSWORD: 1818
-#      PGDATA: /data/postgres
-#    volumes:
-#      - db:/data/postgres
-#    ports:
-#      - "5332:5432"
-#    networks:
-#      - db
+#  mysqldb:
+#    image: mysql
 #    restart: unless-stopped
+#    env_file: ./.env
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=1818
+#      - MYSQL_DATABASE=userregistration_database_sql_docker
+#    ports:
+#      - 3306:3306
+#    volumes:
+#      - db:/var/lib/docker/volumes/18530eb6dbcdd5665320fb81fe969f46f6e39d4972544293298bd889ed5b433f/_data
+#  app:
+#    depends_on:
+#      - mysql
+#    build: ./bezkoder-app
+#    restart: on-failure
+#    env_file: ./.env
+#    ports:
+#      - 8088:8088
+#    environment:
+#      SPRING_APPLICATION_JSON: '{
+#        "spring.datasource.url"  : "jdbc:mysql://127.0.0.1:3306/userregistration_database_sql_docker?useSSL=false",
+#        "spring.datasource.username" : "root",
+#        "spring.datasource.password" : "1818",
+#        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8InnoDBDialect",
+#        "spring.jpa.hibernate.ddl-auto" : "update"
+#      }'
+#    volumes:
+#      - .m2:/root/.m2
+#    stdin_open: true
+#    tty: true
+#
+#volumes:
+#  db:
+#services:
+#  mysqldb:
+#    image: mysql
+#    restart: unless-stopped
+#    env_file: ./.env
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=1818
+#      - MYSQL_DATABASE=userregistration_database_sql_docker
+#    ports:
+#      - 3306:3306
+#    volumes:
+#      - db:/var/lib/docker/volumes/18530eb6dbcdd5665320fb81fe969f46f6e39d4972544293298bd889ed5b433f/_data
+#  app:
+#    depends_on:
+#      - mysql
+#    build: ./bezkoder-app
+#    restart: on-failure
+#    env_file: ./.env
+#    ports:
+#      - 8088:8088
+#    environment:
+#      SPRING_APPLICATION_JSON: '{
+#        "spring.datasource.url"  : "jdbc:mysql://127.0.0.1:3306/userregistration_database_sql_docker?useSSL=false",
+#        "spring.datasource.username" : "root",
+#        "spring.datasource.password" : "1818",
+#        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL8InnoDBDialect",
+#        "spring.jpa.hibernate.ddl-auto" : "update"
+#      }'
+#    volumes:
+#      - .m2:/root/.m2
+#    stdin_open: true
+#    tty: true
+#
+#volumes:
+#  db:
