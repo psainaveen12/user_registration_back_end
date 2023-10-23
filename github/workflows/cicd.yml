@@ -20,17 +20,17 @@ jobs:
       - name: Login to docker hub
         run: docker login
       - name: Build docker image
-        run: docker build -t sainaveen/user_registration_back_end .
+        run: docker build -t psainaveen12/user_registration_back_end .
       - name: Publish image to docker hub
-        run: docker push sainaveen/user_registration_back_end:latest
+        run: docker push psainaveen12/user_registration_back_end:latest
 
   deploy:
     needs: build
     runs-on: [aws-ec2-docker]
     steps:
       - name: Pull Image from docker hub
-        run: docker pull sainaveen/user_registration_back_end:latest
+        run: docker pull psainaveen12/user_registration_back_end:latest
       - name: Delete old container
         run: docker rm -f user_registration_back_end-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name user_registration_back_end-container sainaveen/user_registration_back_end
+        run: docker run -d -p 8080:8080 --name user_registration_back_end-container psainaveen12/user_registration_back_end
