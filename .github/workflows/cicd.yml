@@ -18,7 +18,7 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
       - name: Login to docker hub
-        run: docker login
+        run: docker login -u {{secrets.USERNAME_DOCKER}} -p {{secrets.PASSWORD_DOCKER}}
       - name: Build docker image
         run: docker build -t psainaveen12/user_registration_back_end .
       - name: Publish image to docker hub
