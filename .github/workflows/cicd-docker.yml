@@ -41,6 +41,6 @@ jobs:
         - name: Pull Image from docker hub
           run: sudo docker pull sainaveen12/user_registration_back_end_docker:latest
         - name: Kill port 8080
-          run: sudo fuser -n tcp -k 8080
+          run: sudo fuser -n tcp -k 8080 || true
         - name: Run docker container
           run: sudo docker run -d -p 8080:8080 --name user_registration_back_end_cnt sainaveen12/user_registration_back_end_docker:latest
