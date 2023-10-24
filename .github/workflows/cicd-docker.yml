@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker CICD
 
 on:
   push:
@@ -34,9 +34,13 @@ jobs:
       needs: build
       runs-on: aws-ec2-docker
       steps:
-        - name: Pull Image from docker hub
-          run: docker pull sainaveen12/user_registration_back_end_docker:latest
         - name: Delete old container
-          run: docker rm -f user_registration_back_end_docker_container
+          run: sudo docker rm -f user_registration_back_end_cnt || true
+        - name: Delete old image
+          run: sudo docker rmi -f sainaveen12/user_registration_back_end_docker:latest
+        - name: Pull Image from docker hub
+          run: sudo docker pull sainaveen12/user_registration_back_end_docker:latest
+        - name: Kill port 8080
+          run: sudo fuser -n tcp -k 8080 || true
         - name: Run docker container
-          run: docker run -d -p 8080:8080 --name user_registration_back_end_docker_container sainaveen12/user_registration_back_end_docker
+          run: sudo docker run -d -p 8080:8080 --name user_registration_back_end_cnt sainaveen12/user_registration_back_end_docker
