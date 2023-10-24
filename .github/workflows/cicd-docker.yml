@@ -43,4 +43,4 @@ jobs:
         - name: Pull Image from docker hub
           run: sudo docker pull sainaveen12/user_registration_back_end_docker:latest
         - name: Run docker container
-          run: sudo docker run -d -p 8080:8080 --name user_registration_back_end_docker sainaveen12/user_registration_back_end_docker:latest
+          run: sudo docker run -p 8080:8080 --name user_registration_back_end_docker sainaveen12/user_registration_back_end_docker:latest
