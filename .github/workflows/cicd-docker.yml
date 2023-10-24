@@ -21,11 +21,10 @@ jobs:
       - name: Build Project
         run: mvn clean install -DskipTests
       - name: Login to docker hub
-          env:
+        run: docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
+        env:
             USERNAME_DOCKER: ${{secrets.USERNAME_DOCKER}}
             PASSWORD_DOCKER: ${{secrets.PASSWORD_DOCKER}}
-          run: docker login -u $USERNAME_DOCKER -p $PASSWORD_DOCKER
-          
       - name: Build docker image
         run: docker build -t sainaveen12/user_registration_back_end_docker .
       - name: Publish image to docker hub
