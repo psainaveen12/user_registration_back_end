@@ -39,7 +39,7 @@ jobs:
         - name: Delete old image
           run: sudo docker rmi -f sainaveen12/user_registration_back_end_docker:latest
         - name: Kill port 8080
-          run: sudo lsof -i :8080
+          run: sudo fuser -n tcp -k 8080
         - name: Pull Image from docker hub
           run: sudo docker pull sainaveen12/user_registration_back_end_docker:latest
         - name: Run docker container
