@@ -35,6 +35,8 @@ jobs:
       runs-on: aws-ec2-docker
       steps:
         - name: Delete old container
+          run: sudo docker rm user_registration_back_end_docker
+        - name: Delete old image
           run: sudo docker rmi -f sainaveen12/user_registration_back_end_docker:latest
         - name: Pull Image from docker hub
           run: sudo docker pull sainaveen12/user_registration_back_end_docker:latest
