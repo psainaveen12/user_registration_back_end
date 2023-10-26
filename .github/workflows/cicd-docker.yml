@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
@@ -29,8 +29,8 @@ jobs:
       - name: Publish image to docker hub
         run: docker push sainaveen12/user_registration_back_end_docker:latest
 
-  deploy:
-      needs: build
+  Deploy:
+      needs: Build
       runs-on: [ aws-ec2-docker, self-hosted]
       steps:
         - name: Delete old container
