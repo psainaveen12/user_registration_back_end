@@ -1,24 +1,25 @@
 
 version: '3.8'
+
 services:
-  springboot:
-    container_name: user_registration_back_end_cnt
-    image: sainaveen12/user_registration_back_end_docker:latest
-    ports:
-      - 8080:8080
-  mysql:
-    container_name: sqldb_cnt
-    image: mysql:8.0.33
+  mysql-cnt:
+    image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=18181818
+      - MYSQL_DATABASE=user_sql_ec2_docker
       - MYSQL_USER=root
       - MYSQL_PASSWORD=18181818
-      - MYSQL_DATABASE=user_reg_db_ec2_docker
     volumes:
-      - appvolume:/var/lib/mysql
-volumes:
-  appvolume:
-
+      - /data/mysql
+  springboot-docker-compose-mysql-app-container:
+    image: sainaveen12/user_registration_back_end_docker:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-cnt
+    volumes:
+      - /data/springboot-docker-compose-mysql-app
 
 
 #version: "3.8"
@@ -58,4 +59,4 @@ volumes:
 #
 #volumes:
 #  db:
-
+#
