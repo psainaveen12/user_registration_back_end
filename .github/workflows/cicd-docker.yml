@@ -18,7 +18,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - name: Docker Compose SQL UP
-        run: docker compose up -d
+        run: docker-compose up -d
       - name: Build Project
         run: mvn clean install -DskipTests
       - name: Login to docker hub
