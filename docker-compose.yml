@@ -2,7 +2,7 @@
 services:
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres:latest
     environment:
       POSTGRES_USER: saipostgres
       POSTGRES_PASSWORD: 18181818
