@@ -1,17 +1,17 @@
-server:
-  port: 8080
-spring:
-  application:
-    name: sainaveen12/user_registration_back_end_docker:latest
-  datasource:
-    password: 18181818
-    url: jdbc:postgresql://localhost:5432/customer
-    username: saipostgres
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-    show-sql: true
+#server:
+#  port: 8080
+#spring:
+#  application:
+#    name: sainaveen12/user_registration_back_end_docker:latest
+#  datasource:
+#    password: 18181818
+#    url: jdbc:postgresql://localhost:5432/customer
+#    username: saipostgres
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        format_sql: true
+#    show-sql: true
