@@ -1,19 +1,17 @@
-server:
-  port: 8080
-
 spring:
   datasource:
     username: ${{secrets.H2_DB_USERNAME}}
-    url: "jdbc:h2:mem:userregistration_db_h2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+    url: jdbc:h2:mem:userregistration_db_h2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     password: ${{secrets.H2_DB_PASSWORD}}
   h2:
     console:
-      enabled: true
+      enabled: 'true'
       settings:
-        web-allow-others: true
-        trace: true
+        web-allow-others: 'true'
+        trace: 'true'
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
+
