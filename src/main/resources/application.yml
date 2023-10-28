@@ -1,17 +1,19 @@
-#server:
-#  port: 8080
-#spring:
-#  application:
-#    name: sainaveen12/user_registration_back_end_docker:latest
-#  datasource:
-#    password: 18181818
-#    url: jdbc:postgresql://localhost:5432/customer
-#    username: saipostgres
-#  jpa:
-#    hibernate:
-#      ddl-auto: create-drop
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.PostgreSQLDialect
-#        format_sql: true
-#    show-sql: true
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: ${{secrets.H2_DB_USERNAME}}
+    url: "jdbc:h2:mem:userregistration_db_h2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+    driverClassName: org.h2.Driver
+    password: ${{secrets.H2_DB_PASSWORD}}
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+        trace: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
