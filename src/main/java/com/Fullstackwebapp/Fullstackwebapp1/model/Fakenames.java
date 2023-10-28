@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Fakenames {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int ID;
     private String Givenname;
