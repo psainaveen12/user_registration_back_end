@@ -18,7 +18,7 @@
 -- INSERT INTO user_reg_tbl1 (id, username, date, email, name, phonenumber, time) VALUES(7, 'Colin', '2023-09-05', 'amet.metus@google.edu', 'Nehru Crosby', 9061302212, '03:55:35 PM');
 -- INSERT INTO user_reg_tbl1 (id, username, date, email, name, phonenumber, time) VALUES(8, 'Jason', '2023-09-05', 'eu.metus@google.com', 'Uma Hyde', 9747157145, '03:55:32 PM');
 -- INSERT INTO user_reg_tbl1 (id, username, date, email, name, phonenumber, time) VALUES(9, 'Finn', '2023-09-05', 'eget.varius@hotmail.net', 'Unity Ewing', 9127458358, '03:55:29 PM');
---
+
 --
 -- CREATE TABLE fn_1_5k (
 --  ID INT PRIMARY KEY,

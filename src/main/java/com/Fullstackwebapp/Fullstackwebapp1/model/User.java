@@ -14,9 +14,10 @@ public class User {
     private Long id;
     private String username;
     private String name;
+    private String gender;
     private String email;
     private Long phonenumber;
     private LocalDate date;
     private String time;
-
+    private String pictureurl;
 }

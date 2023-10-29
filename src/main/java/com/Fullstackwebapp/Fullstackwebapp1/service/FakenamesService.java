@@ -9,12 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class FakenamesService {
 
     @Autowired
     FakenamesRepository fakenamesRepository;
+
+    private Random random = new Random();
 
     public Iterable<Fakenames> getAllNames(){
         return fakenamesRepository.findAll();
@@ -39,6 +42,14 @@ public class FakenamesService {
     }
 
     public Fakenames createFakeuser(Fakenames newFakenames){
+//        newFakenames.setPictureurl("https://randomuser.me/api/portraits/"+ newFakenames.getGender() + "/" + random.nextInt(100) + ".jpg");
+
+        if ("female".equals(newFakenames.getGender()))
+            newFakenames.setPictureurl("https://randomuser.me/api/portraits/women/" + random.nextInt(100) + ".jpg");
+        else if ("male".equals(newFakenames.getGender()))
+            newFakenames.setPictureurl("https://randomuser.me/api/portraits/men/" + random.nextInt(100) + ".jpg");
+        else
+            newFakenames.setPictureurl("https://randomuser.me/api/portraits/men/" + random.nextInt(100) + ".jpg");
         return fakenamesRepository.save(newFakenames);
     }
     public String deleteFakeUser(int id){
