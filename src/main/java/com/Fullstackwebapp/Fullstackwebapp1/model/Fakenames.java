@@ -36,5 +36,5 @@ public class Fakenames {
     @Column(name = "Countryfull")
     private String countryfull;
     private int Age;
-
+    private String pictureurl;
 }

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class UserService {
@@ -25,6 +26,13 @@ public class UserService {
     public User createUser(User newUser){
         newUser.setDate(LocalDate.now());
         newUser.setTime(timeFormate(LocalTime.now()));
+        newUser.setPictureurl("https://randomuser.me/api/portraits/" + newUser.getGender() + "/" + new Random().nextInt(100) +".jpg");
+//        if ("female".equals(newUser.getGender()))
+//            newUser.setPictureurl("https://randomuser.me/api/portraits/women/" + new Random().nextInt(100) + ".jpg");
+//        else if ("male".equals(newUser.getGender()))
+//            newUser.setPictureurl("https://randomuser.me/api/portraits/men/" + new Random().nextInt(100) + ".jpg");
+//        else
+//            newUser.setPictureurl("https://randomuser.me/api/portraits/men/" + new Random().nextInt(100) + ".jpg");
         return userRepository.save(newUser);
     }
 
@@ -46,6 +54,14 @@ public class UserService {
                     user.setPhonenumber(newUser.getPhonenumber());
                     user.setDate(LocalDate.now());
                     user.setTime(timeFormate(LocalTime.now()));
+                    user.setGender(newUser.getGender());
+                    user.setPictureurl("https://randomuser.me/api/portraits/" + newUser.getGender() + "/" + new Random().nextInt(100) +".jpg");
+//        if ("female".equals(newUser.getGender()))
+//            newUser.setPictureurl("https://randomuser.me/api/portraits/women/" + new Random().nextInt(100) + ".jpg");
+//        else if ("male".equals(newUser.getGender()))
+//            newUser.setPictureurl("https://randomuser.me/api/portraits/men/" + new Random().nextInt(100) + ".jpg");
+//        else
+//            newUser.setPictureurl("https://randomuser.me/api/portraits/men/" + new Random().nextInt(100) + ".jpg");
                     return userRepository.save(user);
                 }).orElseThrow(()->new UserNotFoundException(id));
     }
