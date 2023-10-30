@@ -7,4 +7,4 @@ user_registration_back_end
 
 # EC2 Swagger UI
 
-    http://3.135.199.72:8080/swagger-ui/index.html#/
+    http://18.188.207.21:8080/swagger-ui/index.html#/
